@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint-fix": "eslint --fix .  --ext .js"
   },
   "author": "",
   "license": "ISC",
@@ -12,5 +13,8 @@
     "pdf-lib": "^1.17.1",
     "pdf2json": "^3.0.2"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "eslint": "^8.30.0"
+  }
 }
