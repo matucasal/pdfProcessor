@@ -39,6 +39,37 @@ const generatePdf = async () => {
     color: rgb(0, 0, 0),
   })
 
+  const timesBold = await pdfDoc.embedFont(StandardFonts.TimesRomanBold);
+      
+  signaturePage.drawText(`DATE:`,{
+    x: 73,
+    y: 580,
+    size: 11,
+    font: timesBold,
+    color: rgb(0, 0, 0),
+  });
+
+  signaturePage.drawLine({
+    start: { x: 108, y: 580 },
+    end: { x: 330, y: 580 },
+    thickness: 0.7,
+    color: rgb(0, 0, 0),
+    opacity: 1,
+  })
+
+  const today = new Date();
+  const dd = String(today.getDate()).padStart(2, '0');
+  const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+  const yyyy = today.getFullYear();
+
+  signaturePage.drawText(`${mm}/${dd}/${yyyy}`, {
+    x: 150,
+    y: 585,
+    size: 12,
+    font: times,
+    color: rgb(0, 0, 0),
+  })
+
 		const pdfBytes = await pdfDoc.save();
 		fs.writeFile('result/test.pdf',pdfBytes);
 		
